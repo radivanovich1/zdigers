@@ -2,19 +2,11 @@ package sweet.messager.vk.utils;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.text.Html;
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.AlignmentSpan;
-import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,16 +26,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.TimeZone;
 
 import sweet.messager.vk.ApplicationName;
-import sweet.messager.vk.Cells.VideoCell;
 import sweet.messager.vk.Constants;
 import sweet.messager.vk.R;
 import sweet.messager.vk.interfaces.OnCreateView;
 import sweet.messager.vk.model.User;
-import sweet.messager.vk.services.VideoPlayer;
 
 public class Body {
 
@@ -448,7 +436,10 @@ public class Body {
                             params = new LinearLayout.LayoutParams(playButtonSize, playButtonSize);
 
                             imageView = new ImageView(context);
-                            imageView.setImageResource(R.mipmap.play_ms);
+                            imageView.setImageResource(R.drawable.ic_play_zdiget);
+                            if (ApplicationName.colors != null) {
+                                imageView.setColorFilter(ApplicationName.colors.toolBarColor);
+                            }
                             //imageView.setBackgroundColor(218103808);
                             imageView.setLayoutParams(params);
                             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);

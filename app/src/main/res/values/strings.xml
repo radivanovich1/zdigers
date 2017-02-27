@@ -43,5 +43,6 @@
     <string name="title_activity_color_select">ColorSelectActivity</string>
     <string name="title_activity_object">ObjectActivity</string>
     <string name="title_activity_multimedia">MultimediaActivity</string>
+    <string name="title_activity_new_zdiger"></string>
 
 </resources>

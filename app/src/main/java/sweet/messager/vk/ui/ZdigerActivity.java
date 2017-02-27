@@ -1,5 +1,6 @@
 package sweet.messager.vk.ui;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -37,13 +37,7 @@ public class ZdigerActivity extends AppCompatActivity {
             toolbar.setBackgroundColor(ApplicationName.colors.toolBarColor);
             fab.setBackgroundTintList(ColorStateList.valueOf(ApplicationName.colors.toolBarColor));
         }
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         zdiger_list = (ListView)findViewById(R.id.zdiger_list);
 
         ArrayList<String> names =new ArrayList<String>();
@@ -66,7 +60,8 @@ public class ZdigerActivity extends AppCompatActivity {
         bttn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Added in next version :D",Toast.LENGTH_LONG).show();
+                Intent new_zdiger = new Intent(ApplicationName.getAppContext(),New_zdigerActivity.class);
+                startActivity(new_zdiger);
             }
         });
 

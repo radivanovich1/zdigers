@@ -56,7 +56,6 @@ import sweet.messager.vk.api.Async;
 import sweet.messager.vk.api.VK;
 import sweet.messager.vk.api.VKException;
 import sweet.messager.vk.db.Method;
-import sweet.messager.vk.db.addStickersToDb;
 import sweet.messager.vk.interfaces.FragmentListener;
 import sweet.messager.vk.interfaces.OnRecyclerItemListener;
 import sweet.messager.vk.model.HistoryResult;
@@ -140,11 +139,12 @@ public class ChatActivity extends Fragment {
         View view = getView();
 
 
-
+        sendButton = (ImageView) view.findViewById(R.id.btnSend);
         final LinearLayout toolbar = (LinearLayout) view.findViewById(R.id.toolbar);
         if (ApplicationName.colors != null) {
             toolbar.setBackgroundColor(ApplicationName.colors.toolBarColor);
             view.findViewById(R.id.main).setBackgroundColor(ApplicationName.colors.chatBg);
+            sendButton.setColorFilter(ApplicationName.colors.toolBarColor);
         }
 
         final RecyclerView chats = (RecyclerView) view.findViewById(R.id.list_view_messages);
@@ -167,7 +167,7 @@ public class ChatActivity extends Fragment {
 
 
         Method.addid(id);
-        sendButton = (ImageView) view.findViewById(R.id.btnSend);
+
         list_view_attachments = (RecyclerView) view.findViewById(R.id.list_view_attachments);
         topText = mBundle.getString("title");
 

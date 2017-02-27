@@ -867,6 +867,19 @@ public class Method {
         }
     }
 
+    public static void addCustomSticker(String name, String owner_id) {
+        ApplicationName.getDb().beginTransaction();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("owner_id", owner_id);
+        ApplicationName.getDb().insert("audio_stickers", null, contentValues);
+        try {
+            ApplicationName.getDb().setTransactionSuccessful();
+        } finally {
+            ApplicationName.getDb().endTransaction();
+        }
+    }
+
     public static ArrayList<String> getStickers() {
         ArrayList<String> list = new ArrayList<>();
         String orderBy = "name";
