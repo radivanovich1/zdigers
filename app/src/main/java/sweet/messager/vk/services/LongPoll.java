@@ -555,7 +555,7 @@ public class LongPoll extends Service {
 
     private JSONObject connectLongPoll() {
         try {
-            StringBuilder params = new StringBuilder("http://");
+            StringBuilder params = new StringBuilder("https://");
             params.append(longPollModel.server);
             params.append("?ts=");
             params.append(longPollModel.ts);

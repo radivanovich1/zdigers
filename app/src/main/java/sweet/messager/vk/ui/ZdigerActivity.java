@@ -55,6 +55,7 @@ public class ZdigerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+
             }
         });
         bttn_add.setOnClickListener(new View.OnClickListener() {

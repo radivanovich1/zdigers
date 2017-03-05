@@ -32,7 +32,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".services.LongPoll" />
+        <service android:name=".services.LongPoll"
+            />
 
         <receiver android:name=".InternetStateReceiver">
             <intent-filter>
