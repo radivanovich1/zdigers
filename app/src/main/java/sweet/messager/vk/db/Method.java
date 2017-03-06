@@ -872,6 +872,7 @@ public class Method {
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
         contentValues.put("owner_id", owner_id);
+        contentValues.put("cat", "my");
         ApplicationName.getDb().insert("audio_stickers", null, contentValues);
         try {
             ApplicationName.getDb().setTransactionSuccessful();
@@ -879,6 +880,8 @@ public class Method {
             ApplicationName.getDb().endTransaction();
         }
     }
+
+
 
     public static ArrayList<String> getStickers() {
         ArrayList<String> list = new ArrayList<>();
@@ -904,6 +907,35 @@ public class Method {
 
         return list;
     }
+
+
+    public static ArrayList<String> getMyStickers() {
+        ArrayList<String> list = new ArrayList<>();
+        String orderBy = "name";
+        try {
+            String[] selectionArgs;
+            selectionArgs = new String[]{"my"};
+            Cursor c = ApplicationName.getDb().query("audio_stickers", null, "cat=?", selectionArgs, null, null, orderBy);
+            if (c != null && c.moveToFirst()) {
+                int name = c.getColumnIndex("name");
+
+                do {
+                    list.add(c.getString(name));
+                } while (c.moveToNext());
+            }
+            if (c != null) c.close();
+
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        return list;
+    }
+
 
     public static HashMap<String, String> getmId(String name) {
         HashMap<String, String> _return = new HashMap<>();

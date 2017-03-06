@@ -285,12 +285,14 @@ public class VKApi {
         LongPollModel longPollModel = new LongPollModel();
         try {
             JSONObject response = get("messages.getLongPollServer", null).getJSONObject("response");
+
             longPollModel.key = response.getString("key");
             longPollModel.server = response.getString("server");
             longPollModel.ts = response.getInt("ts");
             return longPollModel;
         } catch (JSONException e) {
             Log.e("VKApi", String.valueOf(e));
+
             return null;
         } catch (NullPointerException e) {
             return null;

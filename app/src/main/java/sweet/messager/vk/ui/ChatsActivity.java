@@ -1,6 +1,7 @@
 package sweet.messager.vk.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Build;
@@ -34,6 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import sweet.messager.vk.ApplicationName;
+import sweet.messager.vk.BaseActivity;
 import sweet.messager.vk.R;
 import sweet.messager.vk.adapters.Chats;
 import sweet.messager.vk.adapters.Drawer;
@@ -42,6 +44,7 @@ import sweet.messager.vk.db.Method;
 import sweet.messager.vk.interfaces.FragmentListener;
 import sweet.messager.vk.interfaces.VKListener;
 import sweet.messager.vk.model.ChatModel;
+import sweet.messager.vk.services.LongPoll;
 import sweet.messager.vk.vk.Dialogs;
 
 
@@ -61,6 +64,7 @@ public class ChatsActivity extends Fragment implements Chats.OnItemClickListener
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+
     }
 
     @Override
@@ -129,6 +133,7 @@ public class ChatsActivity extends Fragment implements Chats.OnItemClickListener
             updateDialogs(0);
         }
 
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -158,6 +163,7 @@ public class ChatsActivity extends Fragment implements Chats.OnItemClickListener
     }
 
     public void updateDialogs(int offset) {
+
         // loading = true;
         if (loading) return;
         swipeRefreshLayout.setRefreshing(true);
@@ -195,6 +201,7 @@ public class ChatsActivity extends Fragment implements Chats.OnItemClickListener
 
     @Override
     public void onClick(ChatModel item) {
+
        // mListener.onChat(item);
     }
 
@@ -272,6 +279,7 @@ public class ChatsActivity extends Fragment implements Chats.OnItemClickListener
          */
         super.onPause();
     }
+
 
 }
 

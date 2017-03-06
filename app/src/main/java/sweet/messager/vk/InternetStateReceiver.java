@@ -12,11 +12,11 @@ public class InternetStateReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         final ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        final android.net.NetworkInfo wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        final android.net.NetworkInfo mobile = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        final Intent service = new Intent(context, LongPoll.class);
+        final android.net.NetworkInfo wifi = connMgr.getActiveNetworkInfo();//(ConnectivityManager.TYPE_WIFI);
+        final android.net.NetworkInfo mobile = connMgr.getActiveNetworkInfo();//(ConnectivityManager.TYPE_MOBILE);
+        final Intent service = new Intent(ApplicationName.getAppContext(), LongPoll.class);
         if (wifi != null && wifi.isAvailable() || mobile != null && mobile.isAvailable()) {
-            context.startService(service);
+           context.startService(service);
         } else {
             context.stopService(service);
         }

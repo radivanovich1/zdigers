@@ -72,7 +72,9 @@ public class Sql extends SQLiteOpenHelper {
                 + "name TEXT,"
                 + "url TEXT,"
                 + "mid INTEGER,"
+                + "cat TEXT,"
                  + "owner_id TEXT);");
+
         db.execSQL("CREATE TABLE chatt ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "mid INTEGER,"

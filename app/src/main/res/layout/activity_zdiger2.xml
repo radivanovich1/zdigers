@@ -35,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:text="Zdigers"
                 android:textSize="18dp"
-                style="@style/ActionBar.Transparent.VKMessages.Title"/>
+                style="@style/ActionBar.Transparent.VKMessages.Title"
+                android:id="@+id/cat_title" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

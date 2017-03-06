@@ -16,6 +16,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,8 @@ import sweet.messager.vk.vk.GetMsg;
 import sweet.messager.vk.vk.VKApi;
 
 public class LongPoll extends Service {
+
+    private static final String LOG_TAG ="seeeeeerrr" ;
 
     public interface OnDialogUpdate {
         void onNewMsg(ChatModel chat);
@@ -107,6 +110,18 @@ public class LongPoll extends Service {
         NOTIFICATION_CLICK = getPackageName() + ".NOTIFICATION_CLICK";
         IntentFilter intentFilter = new IntentFilter(NOTIFICATION_CLICK);
         registerReceiver(new NotificationClick(), intentFilter);
+    }
+
+
+
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(LOG_TAG, "onStartCommand");
+        return super.onStartCommand(intent, flags, startId);
+    }
+    @Override
+    public void onDestroy() {
+        super.stopSelf();
+        super.onDestroy();
     }
 
     public class LocalBinder extends Binder {
@@ -746,5 +761,6 @@ public class LongPoll extends Service {
             dialog.show();
         }
     }
+
 
 }

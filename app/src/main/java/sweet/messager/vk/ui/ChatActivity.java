@@ -50,7 +50,7 @@ import sweet.messager.vk.ListActivity;
 import sweet.messager.vk.ObjectActivity;
 import sweet.messager.vk.R;
 import sweet.messager.vk.adapters.Attachments;
-import sweet.messager.vk.adapters.Images;
+
 import sweet.messager.vk.adapters.MessagesAdapter;
 import sweet.messager.vk.api.Async;
 import sweet.messager.vk.api.VK;
@@ -282,34 +282,17 @@ public class ChatActivity extends Fragment {
                     public void onItemClick(int id) {
                         Intent intentAttach = new Intent(getActivity(), ListActivity.class);
                         switch (id) {
-                            case R.id.action_add_image:
-                                if (attachPhotos.size() == 0) {
-                                    Intent intent = new Intent(ApplicationName.getAppContext(), AttachActivity.class);
-                                    startActivityForResult(intent, 3);
-                                } else {
-                                    list_view_attachments.setVisibility(View.VISIBLE);
-                                    attachmentsAdapter.addUploadPhoto(attachPhotos);
-                                }
-                                break;
-                            case R.id.action_add_audio:
-                                intentAttach.putExtra("type", Constants.AUDIO);
-                                // intentAttach.putExtra("ids", attachmentsAdapter.getIds("audio"));
-                                startActivityForResult(intentAttach, 1);
-                                break;
-                            case R.id.action_add_video:
-                                intentAttach.putExtra("type", Constants.VIDEO);
-                                // intentAttach.putExtra("ids", attachmentsAdapter.getIds("video"));
-                                startActivityForResult(intentAttach, 1);
-                                break;
-                            case R.id.action_add_doc:
-                                intentAttach.putExtra("type", Constants.DOC);
-                                // intentAttach.putExtra("ids", attachmentsAdapter.getIds("doc"));
-                                startActivityForResult(intentAttach, 1);
-                                break;
+
                             case R.id.action_add_stick:
                                Intent intent = new Intent(ApplicationName.getAppContext(),ZdigerActivity.class);
+                                intent.putExtra("cat", "Стикеры");
 
                                 startActivity(intent);
+                                break;
+                            case R.id.my_zdigers:
+                                Intent intent1 = new Intent(ApplicationName.getAppContext(),ZdigerActivity.class);
+                                intent1.putExtra("cat", "Мои аудио-стикеры");
+                                startActivity(intent1);
                                 break;
                         }
                         dialog.dismiss();
@@ -317,48 +300,8 @@ public class ChatActivity extends Fragment {
                 });
 
                 final TextView photosName = (TextView) ((LinearLayout) menu.findViewById(R.id.items)).getChildAt(0).findViewById(R.id.name);
-                imageList.setAdapter(new Images(
-                        new OnRecyclerItemListener() {
-                            @Override
-                            public void onClick(int position, Object object) {
-                                if (position == 0) {
-                                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                    if (takePictureIntent.resolveActivity(ApplicationName.getAppContext().getPackageManager()) != null) {
-                                        File photoFile = null;
-                                        try {
-                                            photoFile = createImageFile();
-                                        } catch (IOException ex) {
 
-                                        }
-                                        if (photoFile != null) {
-                                            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
-                                            startActivityForResult(takePictureIntent, 2);
-                                        }
-                                    }
-                                } else {
-                                    int size = attachPhotos.size();
-                                    JSONObject item = (JSONObject) object;
-                                    if (attachPhotos.indexOf(item) == -1) {
-                                        if (size > 9) {
-                                            return;
-                                        }
-                                        attachPhotos.add(item);
-                                        size = size + 1;
-                                    } else {
-                                        attachPhotos.remove(item);
-                                        size = Math.abs(size - 1);
-                                    }
-                                    photosName.setText(size == 0 ? "Изображение" : Html.fromHtml(
-                                            "Прикрепить <b>" + AndroidUtils.declOfNum(attachPhotos.size(), new String[]{
-                                                    "фотографию",
-                                                    "фотографии",
-                                                    "фотографий"
-                                            }) + "</b>"
-                                    ));
-                                }
-                            }
-                        }
-                ));
+
             }
         });
 

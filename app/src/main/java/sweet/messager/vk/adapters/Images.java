@@ -28,7 +28,7 @@ import java.util.List;
 import sweet.messager.vk.ApplicationName;
 import sweet.messager.vk.R;
 import sweet.messager.vk.interfaces.OnRecyclerItemListener;
-
+/*
 public class Images extends RecyclerView.Adapter<Images.ViewHolder> {
 
     Context context;
@@ -42,17 +42,8 @@ public class Images extends RecyclerView.Adapter<Images.ViewHolder> {
         images = getAllShownImagesPath(false);
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(
-                LayoutInflater.from(context)
-                        .inflate(
-                                viewType == 5 ? R.layout.camera : R.layout.image
-                                , parent, false)
-        );
-    }
 
-    @Override
+  @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (position != 0) {
             try {
@@ -86,7 +77,7 @@ public class Images extends RecyclerView.Adapter<Images.ViewHolder> {
             itemView.setOnClickListener(this);
             imageView = (ImageView) itemView.findViewById(R.id.image);
             image_bg = itemView.findViewById(R.id.image_bg);
-            surface = (SurfaceView) itemView.findViewById(R.id.camera_view);
+         //   surface = (SurfaceView) itemView.findViewById(R.id.camera_view);
         }
 
         @Override
@@ -170,8 +161,8 @@ public class Images extends RecyclerView.Adapter<Images.ViewHolder> {
             }
         } catch (NullPointerException e) { }
          */
-        return listOfAllImages;
-    }
+  //      return listOfAllImages;
+//    }
 
 
-}
+//}

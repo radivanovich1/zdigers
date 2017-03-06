@@ -61,7 +61,7 @@ public class WebViewActivity extends ActionBarActivity {
         });
         Animation animation = AnimationUtils.loadAnimation(ApplicationName.getAppContext(), R.anim.rotate);
         progressBar.setAnimation(animation);
-        String url = "http://oauth.vk.com/authorize?client_id=4757672&scope=2080255&redirect_uri="+ URLEncoder.encode("https://oauth.vk.com/blank.html") + "&response_type=token";
+        String url = "https://oauth.vk.com/authorize?client_id=4757672&scope=2080255&redirect_uri="+ URLEncoder.encode("https://oauth.vk.com/blank.html") + "&response_type=token";
         if (getIntent().hasExtra("url")) {
             url = getIntent().getStringExtra("url");
         }

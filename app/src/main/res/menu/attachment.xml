@@ -1,23 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_add_image"
-        android:title="Изображение"
-        android:icon="@mipmap/ic_atttach_menu_image"
-        />
-    <item android:id="@+id/action_add_audio"
-        android:title="Аудиозапись"
-        android:icon="@mipmap/ic_atttach_menu_audio"
-        />
-    <item android:id="@+id/action_add_video"
-        android:title="Видеозапись"
-        android:icon="@mipmap/ic_atttach_menu_video"
-        />
-    <item android:id="@+id/action_add_doc"
-        android:title="Документ"
-        android:icon="@mipmap/ic_atttach_menu_doc"
-        />
+
     <item android:id="@+id/action_add_stick"
         android:title="Здигер"
+        android:icon="@mipmap/ic_atttach_menu_audio"
+        />
+    <item android:id="@+id/my_zdigers"
+        android:title="Мои аудио-стикеры"
         android:icon="@mipmap/ic_atttach_menu_doc"
         />
 
