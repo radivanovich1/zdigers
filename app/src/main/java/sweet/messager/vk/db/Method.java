@@ -854,11 +854,12 @@ public class Method {
     }
 
 
-    public static void addSticker(String name, String url) {
+    public static void addSticker(String name, String url,String type) {
         ApplicationName.getDb().beginTransaction();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
         contentValues.put("url", url);
+        contentValues.put("cat", type);
         ApplicationName.getDb().insert("audio_stickers", null, contentValues);
         try {
             ApplicationName.getDb().setTransactionSuccessful();
@@ -887,7 +888,9 @@ public class Method {
         ArrayList<String> list = new ArrayList<>();
         String orderBy = "name";
         try {
-            Cursor c = ApplicationName.getDb().query("audio_stickers", null, null, null, null, null, orderBy);
+            String[] selectionArgs;
+            selectionArgs = new String[]{"all"};
+            Cursor c = ApplicationName.getDb().query("audio_stickers", null,"cat=?", selectionArgs, null, null, orderBy);
             if (c != null && c.moveToFirst()) {
                 int name = c.getColumnIndex("name");
 

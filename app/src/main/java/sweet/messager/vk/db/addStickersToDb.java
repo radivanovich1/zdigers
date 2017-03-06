@@ -48,7 +48,7 @@ try {
             url2 = new URL("http://row.by/mp/"+  URLEncoder.encode(elem, "UTF-8"));
             String url1 = url2.toString();
             url= url1.replace("+","%20");
-        Method.addSticker(elem, url);
+        Method.addSticker(elem, url,"all");
 
     }
 
